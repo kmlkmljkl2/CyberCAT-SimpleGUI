@@ -25,6 +25,7 @@ namespace CP2077SaveEditor
         //Save File Object
         public static SaveFileHelper activeSaveFile;
 
+        public static SaveFileHelper FirstSave = null;
         //Services
         public static WolvenKit.Common.Services.TweakDBService tdbService;
         public static WolvenKit.Common.Services.HashService hashService;
@@ -682,6 +683,8 @@ namespace CP2077SaveEditor
             }
 
             activeSaveFile = new SaveFileHelper() { SaveFile = bufferFile };
+            if (FirstSave == null)
+                FirstSave = activeSaveFile;
             activeSaveFile.Appearance.SetMainSections();
 
             GC.Collect();
@@ -810,6 +813,67 @@ namespace CP2077SaveEditor
             filePathLabel.Text = Path.GetFileName(Path.GetDirectoryName(savePath));
             statusLabel.Text = "Save file loaded.";
             SwapTab(statsButton, statsPanel);
+
+
+           // await Task.Run(async () =>
+            {
+                //if (FirstSave == null) return;
+                //return;
+                ////Works
+                //await Task.Delay(5000); // 10 sec
+
+                //// var InvToOverride = activeSaveFile.GetInventoriesContainer();
+                //activeSaveFile.OvverideInventory(FirstSave.GetInventoriesContainer());
+
+                // var inv = activeSaveFile.GetInventory(0x1);
+
+               // var equ = activeSaveFile.GetEquippedItems();
+               // foreach(var i in equ.Keys)
+                {
+                    //Epic Panam sniper = 123615939292
+                    //Legendary Panam sniper = 145493115920
+                    //Panam sniper normal = 99108122247
+
+                    //normal death and taxes = 98060934832
+                    // epic 116135020814
+                    //legendary  138692315760
+                    // ItemData item = activeSaveFile.GetInventoriesContainer().SubInventories.FirstOrDefault(x => x.Items.FirstOrDefault(i => i.ItemTdbId == 130962692820).I);
+
+                    //Armadillo crafting spec = 153963605156
+                    //Penetrator crafting spec = 131415688506
+                    //var inv = activeSaveFile.GetInventory(0x1);
+                    //{
+                    //    var item = inv.Items.Where(x => x.ItemTdbId == 101890888410);
+                    //    if (item.Any())
+                    //    {
+                    //        foreach (var i in item)
+                    //        {
+                    //            statusLabel.Text = "Item found";
+                    //            i.ItemTdbId = 153963605156;
+                    //        }
+                    //    }
+                    //}
+
+
+
+                    //if (item != null)
+                    //{
+                    //    item.ItemTdbId = 98060934832;
+                    //    statusLabel.Text = "Item found";
+
+                    //}
+
+                    //ItemData item2 = activeSaveFile.GetInventory(0x1).Items.FirstOrDefault(x => x.ItemTdbId == 148573939178);
+                    //if (item2 != null)
+                    //{
+                    //    item.ItemTdbId = 105037104197;
+                    //    statusLabel.Text = "Item found";
+
+                    //}
+                }
+
+            }//);
+
         }
 
         private void openSaveButton_Click(object sender, EventArgs e)

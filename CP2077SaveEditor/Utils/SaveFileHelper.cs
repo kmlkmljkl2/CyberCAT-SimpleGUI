@@ -47,6 +47,11 @@ namespace CP2077SaveEditor
             return (Inventory)SaveFile.Nodes[SaveFile.Nodes.FindIndex(x => x.Name == "inventory")].Value;
         }
 
+        public void OvverideInventory(Inventory inv)
+        {
+            SaveFile.Nodes[SaveFile.Nodes.FindIndex(x => x.Name == "inventory")].Value = inv;
+        }
+
         public NodeEntry GetFactsContainer()
         {
             var questSystem = SaveFile.Nodes[SaveFile.Nodes.FindIndex(x => x.Name == "questSystem")]; return questSystem.Children[questSystem.Children.FindIndex(x => x.Name == "FactsDB")];
@@ -340,6 +345,8 @@ namespace CP2077SaveEditor
         {
             return this.GetInventoriesContainer().SubInventories.FirstOrDefault(x => x.InventoryId == id);
         }
+
+        
     }
 
 }
